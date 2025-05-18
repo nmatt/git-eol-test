@@ -4,10 +4,10 @@
 
 For any of the following configurations:
 
-| core.autocrlf | core.eol |
-|:-------------:|:--------:|
-| false         | lf       |
-| input         | *any*    |
+| Configuration | core.autocrlf | core.eol |
+|--------------:|:-------------:|:--------:|
+|             1 | false         | lf       |
+|             2 | input         | *any*    |
 
 The result of `git ls-files --eol testfiles` after checkout should be:
 
@@ -30,10 +30,10 @@ i/lf    w/lf    attr/text               testfiles/text.native
 
 For any of the following configurations:
 
-| core.autocrlf | core.eol |
-|:-------------:|:--------:|
-| false         | crlf     |
-| true          | *any*    |
+| Configuration | core.autocrlf | core.eol |
+|--------------:|:-------------:|:--------:|
+|             3 | false         | crlf     |
+|             4 | true          | *any*    |
 
 The result of `git ls-files --eol testfiles` after checkout should be:
 
