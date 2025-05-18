@@ -24,6 +24,7 @@ i/lf    w/crlf  attr/text eol=crlf      testfiles/text.crlf
 i/lf    w/lf    attr/text eol=lf        testfiles/text.lf
 i/lf    w/lf    attr/text               testfiles/text.native
 ```
+(i = index, w = working directory)
 
 ### Checkout defaulting to CRLF
 
@@ -37,7 +38,26 @@ For any of the following configurations:
 The result of `git ls-files --eol testfiles` after checkout should be:
 
 ```
+i/lf    w/crlf  attr/text=auto eol=crlf testfiles/auto.crlf
+i/lf    w/lf    attr/text=auto eol=lf   testfiles/auto.lf
+i/lf    w/crlf  attr/text=auto          testfiles/auto.native
+i/-text w/-text attr/text=auto          testfiles/binary.auto
+i/-text w/-text attr/text=auto eol=crlf testfiles/binary.auto.crlf
+i/-text w/-text attr/text=auto eol=lf   testfiles/binary.auto.lf
+i/crlf  w/crlf  attr/-text              testfiles/binary.explicit.crlf
+i/lf    w/lf    attr/-text              testfiles/binary.explicit.lf
+i/lf    w/crlf  attr/text eol=crlf      testfiles/text.crlf
+i/lf    w/lf    attr/text eol=lf        testfiles/text.lf
+i/lf    w/crlf  attr/text               testfiles/text.native
 ```
+(i = index, w = working directory)
+
+### Check-in
+
+Any modified file in the working directory that is recognized as a
+text file (e.g. `auto.*` and `text.*` in the above) that contains CRLF line endings
+will be converted to LF in the index upon check-in (i.e. `git add`).
+This can be verified using `git ls-files --eol` as in the above.
 
 ### Additional notes
 
