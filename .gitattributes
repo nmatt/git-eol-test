@@ -1,0 +1,7 @@
+*                    text=auto
+*.crlf               text=auto eol=crlf
+*.lf                 text=auto eol=lf
+text.*               text
+text.crlf            text eol=crlf
+text.lf              text eol=lf
+binary.explicit.*    -text
